@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CircleButton component renders a button.CircleButton by default 1`] = `
+<a
+  className="NavCircleButton "
+/>
+`;
+
+exports[`CircleButton component renders the circle button from props 1`] = `
+<a
+  className="NavCircleButton test-class-name"
+  data-other="test-other-prop"
+>
+  <p>
+    test children
+  </p>
+</a>
+`;

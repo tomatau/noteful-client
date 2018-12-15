@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotefulForm component renders a form.NotefulForm by default 1`] = `
+<form
+  action="#"
+  className="Noteful-form "
+/>
+`;
+
+exports[`NotefulForm component renders the NotefulForm given props 1`] = `
+<form
+  action="#"
+  className="Noteful-form test-class-name"
+  data-other="test-other-prop"
+>
+  <p>
+    test children
+  </p>
+</form>
+`;

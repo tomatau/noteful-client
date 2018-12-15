@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteListMain component renders a .NoteListMain by default 1`] = `
+<section
+  className="NoteListMain"
+>
+  <ul />
+  <div
+    className="NoteListMain__button-container"
+  >
+    <NavCircleButton
+      className="NoteListMain__add-note-button"
+      tag={[Function]}
+      to="/add-note"
+      type="button"
+    >
+      <FontAwesomeIcon
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon="plus"
+        inverse={false}
+        listItem={false}
+        mask={null}
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        title=""
+        transform={null}
+      />
+      <br />
+      Note
+    </NavCircleButton>
+  </div>
+</section>
+`;
+
+exports[`NoteListMain component renders a Note in ul for each notes in array 1`] = `
+<ul>
+  <li
+    key="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <Note
+      id="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
+      modified="2019-01-03T00:00:00.000Z"
+      name="Dogs"
+    />
+  </li>
+  <li
+    key="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <Note
+      id="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
+      modified="2018-08-15T23:00:00.000Z"
+      name="Cats"
+    />
+  </li>
+  <li
+    key="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <Note
+      id="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
+      modified="2018-03-01T00:00:00.000Z"
+      name="Pigs"
+    />
+  </li>
+  <li
+    key="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <Note
+      id="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
+      modified="2019-01-04T00:00:00.000Z"
+      name="Birds"
+    />
+  </li>
+</ul>
+`;
