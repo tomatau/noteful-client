@@ -8,7 +8,7 @@ export default function Note(props) {
   return (
     <div className='Note'>
       <h2 className='Note__title'>
-        <Link to={`/note/${props.id}`}>
+        <Link to={`/noteful-client/note/${props.id}`}>
           {props.name}
         </Link>
       </h2>

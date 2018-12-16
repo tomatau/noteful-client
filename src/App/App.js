@@ -26,7 +26,7 @@ class App extends Component {
     const { notes, folders } = this.state
     return (
       <>
-        {['/', '/folder/:folderId'].map(path =>
+        {['/noteful-client/', '/noteful-client/folder/:folderId'].map(path =>
           <Route
             exact
             key={path}
@@ -41,7 +41,7 @@ class App extends Component {
           />
         )}
         <Route
-          path='/note/:noteId'
+          path='/noteful-client/note/:noteId'
           render={routeProps => {
             const { noteId } = routeProps.match.params
             const note = findNote(notes, noteId) || {}
@@ -55,11 +55,11 @@ class App extends Component {
           }}
         />
         <Route
-          path='/add-folder'
+          path='/noteful-client/add-folder'
           component={NotePageNav}
         />
         <Route
-          path='/add-note'
+          path='/noteful-client/add-note'
           component={NotePageNav}
         />
       </>
@@ -70,7 +70,7 @@ class App extends Component {
     const { notes, folders } = this.state
     return (
       <>
-        {['/', '/folder/:folderId'].map(path =>
+        {['/noteful-client/', '/noteful-client/folder/:folderId'].map(path =>
           <Route
             exact
             key={path}
@@ -88,7 +88,7 @@ class App extends Component {
           />
         )}
         <Route
-          path='/note/:noteId'
+          path='/noteful-client/note/:noteId'
           render={routeProps => {
             const { noteId } = routeProps.match.params
             const note = findNote(notes, noteId)
@@ -101,11 +101,11 @@ class App extends Component {
           }}
         />
         <Route
-          path='/add-folder'
+          path='/noteful-client/add-folder'
           component={AddFolder}
         />
         <Route
-          path='/add-note'
+          path='/noteful-client/add-note'
           render={routeProps => {
             return (
               <AddNote
@@ -127,7 +127,7 @@ class App extends Component {
         </nav>
         <header className='App__header'>
           <h1>
-            <Link to='/'>Noteful</Link>
+            <Link to='/noteful-client/'>Noteful</Link>
             {' '}
             <FontAwesomeIcon icon='check-double' />
           </h1>

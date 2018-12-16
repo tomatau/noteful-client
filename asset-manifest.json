@@ -1,7 +1,7 @@
 {
   "main.css": "/noteful-client/static/css/main.d0e3ec09.chunk.css",
-  "main.js": "/noteful-client/static/js/main.ae92f5ee.chunk.js",
-  "main.js.map": "/noteful-client/static/js/main.ae92f5ee.chunk.js.map",
+  "main.js": "/noteful-client/static/js/main.c17fd60e.chunk.js",
+  "main.js.map": "/noteful-client/static/js/main.c17fd60e.chunk.js.map",
   "static/css/1.6b0fc70e.chunk.css": "/noteful-client/static/css/1.6b0fc70e.chunk.css",
   "static/js/1.36bef298.chunk.js": "/noteful-client/static/js/1.36bef298.chunk.js",
   "static/js/1.36bef298.chunk.js.map": "/noteful-client/static/js/1.36bef298.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.d0e3ec09.chunk.css.map": "/noteful-client/static/css/main.d0e3ec09.chunk.css.map",
   "static/css/1.6b0fc70e.chunk.css.map": "/noteful-client/static/css/1.6b0fc70e.chunk.css.map",
   "index.html": "/noteful-client/index.html",
-  "precache-manifest.dd705cb527f3062a2dc96c653b59d6c5.js": "/noteful-client/precache-manifest.dd705cb527f3062a2dc96c653b59d6c5.js",
+  "precache-manifest.dc75524403bcbf6568cff04f0fb4e9c1.js": "/noteful-client/precache-manifest.dc75524403bcbf6568cff04f0fb4e9c1.js",
   "service-worker.js": "/noteful-client/service-worker.js"
 }

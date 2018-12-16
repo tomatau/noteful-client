@@ -22,7 +22,7 @@ export default function NoteListMain(props) {
       <div className='NoteListMain__button-container'>
         <CircleButton
           tag={Link}
-          to='/add-note'
+          to='/noteful-client/add-note'
           type='button'
           className='NoteListMain__add-note-button'
         >

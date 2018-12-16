@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/noteful-client/precache-manifest.dd705cb527f3062a2dc96c653b59d6c5.js"
+  "/noteful-client/precache-manifest.dc75524403bcbf6568cff04f0fb4e9c1.js"
 );
 
 workbox.clientsClaim();
