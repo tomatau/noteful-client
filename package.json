@@ -2,6 +2,7 @@
   "name": "noteful-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tomatau.github.io/noteful-client/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.9",
     "@fortawesome/free-solid-svg-icons": "^5.6.0",
