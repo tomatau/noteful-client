@@ -7,9 +7,6 @@ import APIcontext from '../APIcontext';
 
 export default class Note extends Component {
   static contextType = APIcontext;
-  static defaultProps ={
-    deleteRefresh: ()=>{},
-  }
  
   handleDeleteNote(id){
     fetch(`http://localhost:9090/notes/${id}`, {
@@ -31,10 +28,11 @@ export default class Note extends Component {
       .then(data => {
         // call the callback when the request is successful
         // this is where the App component can remove it from state
+        //console.log(id);
         this.context.deleteNote(id);
-        this.props.history.push('/')
+        //this.props.history.push('/')
         //this.props.deleteRefresh();
-        //this.props.history
+        
       })
       .catch(error => {
         console.error(error)

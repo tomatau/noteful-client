@@ -176,7 +176,7 @@ class App extends Component {
 
   deleteNote = note => {
     this.setState({
-      notes:this.state.notes.filter(item=>item.id!==note.id)
+      notes:this.state.notes.filter(item=>item.id!==note)
     })
 
   }
