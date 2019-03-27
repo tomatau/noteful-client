@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Note from '../Note/Note'
 import './NotePageMain.css'
 import APIcontext from '../APIcontext';
-import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
+import {findNote} from '../notes-helpers'
 
 export default class NotePageMain extends Component {
 
