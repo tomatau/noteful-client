@@ -7,7 +7,7 @@ import NoteListMain from '../NoteListMain/NoteListMain'
 import NotePageMain from '../NotePageMain/NotePageMain'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
-import dummyStore from '../dummy-store'
+//import dummyStore from '../dummy-store'
 import APIcontext from '../APIcontext'
 //import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
@@ -20,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600)
+    //setTimeout(() => this.setState(dummyStore), 600)
     //api call
     Promise.all([
       fetch('http://localhost:9090/folders'),
@@ -50,7 +50,7 @@ class App extends Component {
         // this is where the App component can remove it from state
         this.setState({
           notes:noteRes,
-          fodlers:folderRes,
+          folders:folderRes,
         })
       })
       .catch(error => {
