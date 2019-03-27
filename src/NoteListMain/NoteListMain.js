@@ -10,6 +10,8 @@ import {getNotesForFolder} from '../notes-helpers'
 export default class NoteListMain extends Component {
 
   static contextType = APIcontext;
+
+
   render(){
     const {notes}=this.context;
     const { folderId } = this.props.match.params
@@ -23,6 +25,7 @@ export default class NoteListMain extends Component {
                 id={note.id}
                 name={note.name}
                 modified={note.modified}
+                history={this.props.history}
               />
             </li>
           )}

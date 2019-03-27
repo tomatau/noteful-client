@@ -32,7 +32,7 @@ export default class AddFolder extends Component {
       .then(data => {
         // call the callback when the request is successful
         // this is where the App component can remove it from state
-        this.context.addFolder(data);
+        //this.context.addFolder(data);
       })
       .catch(error => {
         console.error(error)
