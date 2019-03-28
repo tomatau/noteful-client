@@ -7,7 +7,7 @@ import APIcontext from '../APIcontext';
 export default class AddFolder extends Component {
   static contextType =APIcontext;
 
-  handleAddFolder(event){
+  handleAddFolder = event => {
     event.preventDefault()
     const folderName = {
       name: event.target['folder-name-input'].value,
@@ -30,16 +30,15 @@ export default class AddFolder extends Component {
         return res.json()
       })
       .then(data => {
-        // call the callback when the request is successful
-        // this is where the App component can remove it from state
-        //this.context.addFolder(data);
+        this.context.addFolder(data);
+        this.props.history.push(`/folder/${data.id}`)
       })
       .catch(error => {
         console.error(error)
       })
 
   }
-
+ 
   render() {
     return (
       <section className='AddFolder'>

@@ -25,7 +25,6 @@ export default class NoteListMain extends Component {
                 id={note.id}
                 name={note.name}
                 modified={note.modified}
-                history={this.props.history}
               />
             </li>
           )}

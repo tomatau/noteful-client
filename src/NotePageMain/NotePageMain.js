@@ -7,7 +7,7 @@ import {findNote} from '../notes-helpers'
 export default class NotePageMain extends Component {
 
   static contextType=APIcontext;
-  
+
   render(){
     const {notes}=this.context;
     const { noteId } = this.props.match.params
@@ -18,7 +18,6 @@ export default class NotePageMain extends Component {
           id={note.id}
           name={note.name}
           modified={note.modified}
-          //deleteRefresh={this.deleteRefresh}
 
         />
         <div className='NotePageMain__content'>
