@@ -10,6 +10,29 @@ export default class AddNote extends Component {
 
   static contextType = APIcontext;
 
+  state ={
+    inputName:'',
+    inputValid:false,
+    validationMessage:{}
+  };
+
+  setInput = inputName=>{
+    //console.log("hello");
+    this.setState({inputName}, () =>this.validateInput(inputName));
+  };
+
+  validateInput = inputName =>{
+    const validationMessage={...this.state.validationMessage}
+    let inputValid=true;
+    if(inputName.length===0){
+      validationMessage.inputName = "Name must not be blank";
+      inputValid=false;
+    }
+    this.setState({validationMessage,inputValid});
+
+  }
+  
+
   handleAddNote = event =>{
     event.preventDefault()
     const Note = {
@@ -47,15 +70,17 @@ export default class AddNote extends Component {
 
   render() {
     const { folders } = this.context
+    const {inputName,inputValid,}=this.state
+    //console.log(inputValid);
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
         <NotefulForm onSubmit ={this.handleAddNote}>
           <div className='field'>
             <label htmlFor='note-name-input'>
-              Name
+              Name {!inputValid && (<p>Name needs at least one character</p>)}
             </label>
-            <input type='text' id='note-name-input' />
+            <input type='text' id='note-name-input' value={inputName} onChange={e=>this.setInput(e.target.value)} />
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
@@ -77,7 +102,7 @@ export default class AddNote extends Component {
             </select>
           </div>
           <div className='buttons'>
-            <button type='submit'>
+            <button type='submit' disabled={!inputValid}>
               Add note
             </button>
           </div>
