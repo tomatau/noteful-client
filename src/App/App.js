@@ -7,6 +7,7 @@ import NoteListMain from '../NoteListMain/NoteListMain'
 import NotePageMain from '../NotePageMain/NotePageMain'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
+import AppContext from '../AppContext/AppContext'
 import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
 
@@ -121,7 +122,7 @@ class App extends Component {
             return (
               <AddNote
                 {...routeProps}
-                folders={folders}
+                // folders={folders}
               />
             )
           }}
@@ -151,6 +152,7 @@ class App extends Component {
 
   render() {
     return (
+      <AppContext.Provider value={this.state}>
       <div className='App'>
         <nav className='App__nav'>
           {this.renderNavRoutes()}
@@ -166,6 +168,7 @@ class App extends Component {
           {this.renderMainRoutes()}
         </main>
       </div>
+      </AppContext.Provider>
     )
   }
 }

@@ -6,7 +6,7 @@ import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
 export default function NoteListMain(props) {
-  console.log('props in notelistmain', props)
+  // console.log('props in notelistmain', props)
   // const { deleteNote } = props.deleteNote; 
   return (
     <section className='NoteListMain'>

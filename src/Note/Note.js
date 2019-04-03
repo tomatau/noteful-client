@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Note.css'
+import AppContext from '../AppContext/AppContext'
 
 export default function Note(props) {
-  console.log('props in note', props);
+  // console.log('props in note', props);
+
   
   return (
     <div className='Note'>
