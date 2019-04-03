@@ -5,7 +5,9 @@ import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
+
 export default function NoteListMain(props) {
+
   // console.log('props in notelistmain', props)
   // const { deleteNote } = props.deleteNote; 
   return (
@@ -17,7 +19,7 @@ export default function NoteListMain(props) {
               id={note.id}
               name={note.name}
               modified={note.modified}
-              deleteNote={props.deleteNote}
+              // deleteNote={props.deleteNote}
             />
           </li>
         )}

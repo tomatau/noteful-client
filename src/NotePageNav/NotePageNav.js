@@ -2,11 +2,12 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import './NotePageNav.css'
+// import AppContext from '../AppContext/AppContext'
 
 class NotePageNav extends React.Component {
 
-
   render() {
+    console.log(this.context)
     return (
       <div className='NotePageNav'>
         <CircleButton

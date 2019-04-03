@@ -15,6 +15,7 @@ class App extends Component {
   state = {
     notes: [],
     folders: [],
+    deleteNote: this.deleteNote
   };
 
   componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
   }
 
   renderNavRoutes() {
+
     const { notes, folders } = this.state
     return (
       <>
@@ -43,7 +45,7 @@ class App extends Component {
             path={path}
             render={routeProps =>
               <NoteListNav
-                folders={folders}
+                // folders={folders}
                 notes={notes}
                 {...routeProps}
               />
@@ -52,6 +54,7 @@ class App extends Component {
         )}
         <Route
           path='/note/:noteId'
+          // component={<NotePageNav />}
           render={routeProps => {
             const { noteId } = routeProps.match.params
             const note = findNote(notes, noteId) || {}
@@ -77,7 +80,9 @@ class App extends Component {
   }
 
   renderMainRoutes() {
-    const { notes, folders } = this.state
+    const { notes
+      // , folders 
+    } = this.state
     return (
       <>
         {['/', '/folder/:folderId'].map(path =>
@@ -92,7 +97,7 @@ class App extends Component {
                 <NoteListMain
                   {...routeProps}
                   notes={notesForFolder}
-                  deleteNote={this.deleteNote}
+                  // deleteNote={this.deleteNote}
                 />
               )
             }}
@@ -151,8 +156,14 @@ class App extends Component {
   }
 
   render() {
+    const contextValue = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.deleteNote
+    }
+
     return (
-      <AppContext.Provider value={this.state}>
+      <AppContext.Provider value={contextValue}>
       <div className='App'>
         <nav className='App__nav'>
           {this.renderNavRoutes()}
