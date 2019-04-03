@@ -7,7 +7,6 @@ import NoteListMain from '../NoteListMain/NoteListMain'
 import NotePageMain from '../NotePageMain/NotePageMain'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
-import dummyStore from '../dummy-store'
 import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
 
@@ -18,8 +17,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600)
+    fetch('http://localhost:9090/folders')
+    .then(data => data.json())
+    .then(folders => this.setState({
+        folders
+    }))
+
+    fetch('http://localhost:9090/notes')
+    .then(data => data.json())
+    .then(notes => this.setState({
+        notes
+    }))
+
   }
 
   renderNavRoutes() {
@@ -82,6 +91,7 @@ class App extends Component {
                 <NoteListMain
                   {...routeProps}
                   notes={notesForFolder}
+                  deleteNote={this.deleteNote}
                 />
               )
             }}
@@ -96,6 +106,7 @@ class App extends Component {
               <NotePageMain
                 {...routeProps}
                 note={note}
+                deleteNote={this.deleteNote}
               />
             )
           }}
@@ -117,6 +128,25 @@ class App extends Component {
         />
       </>
     )
+  }
+
+  deleteNote = (noteId) => {
+    console.log('noteId', noteId);
+    const url = `http://localhost:9090/notes/${noteId}`;
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      }
+    };
+    
+    fetch(url, options).then(response => response.json()).then(data => console.log(data));
+
+    const filteredNotes = this.state.notes.filter(note => note.id !== noteId);
+
+    this.setState({
+      notes: filteredNotes
+    })
   }
 
   render() {
