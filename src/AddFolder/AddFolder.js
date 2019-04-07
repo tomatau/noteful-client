@@ -42,6 +42,7 @@ export default class AddFolder extends Component {
     return (
       <section className='AddFolder'>
         <h2>Create a folder</h2>
+
         <NotefulForm onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='folder-name-input'>
@@ -55,6 +56,7 @@ export default class AddFolder extends Component {
             </button>
           </div>
         </NotefulForm>
+
       </section>
     )
   }
