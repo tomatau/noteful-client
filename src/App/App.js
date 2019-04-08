@@ -10,7 +10,7 @@ import AddNote from '../AddNote/AddNote'
 import './App.css'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import ErrorBoundry from 'ErrorBoundry'
+import ErrorBoundry from '../ErrorBoundry'
 
 
 class App extends Component {
