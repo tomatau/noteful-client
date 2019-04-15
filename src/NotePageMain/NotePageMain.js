@@ -40,5 +40,7 @@ export default class NotePageMain extends React.Component {
 }
 
 NotePageMain.propTypes = {
-  notes: PropTypes.array
+  match: PropTypes.object,
+  notes: PropTypes.array,
+  params: PropTypes.object
 };

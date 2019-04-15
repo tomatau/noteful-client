@@ -4,6 +4,7 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddFolder.css'
 
+
 export default class AddFolder extends Component {
   static defaultProps = {
     history: {
@@ -40,22 +41,27 @@ export default class AddFolder extends Component {
 
   render() {
     return (
-      <section className='AddFolder'>
-        <h2>Create a folder</h2>
-        <NotefulForm onSubmit={this.handleSubmit}>
-          <div className='field'>
-            <label htmlFor='folder-name-input'>
-              Name
-            </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
-          </div>
-          <div className='buttons'>
-            <button type='submit'>
-              Add folder
-            </button>
-          </div>
-        </NotefulForm>
-      </section>
+        <section className='AddFolder'>
+          <h2>Create a folder</h2>
+          <NotefulForm onSubmit={this.handleSubmit}>
+            <div className='field'>
+              <label htmlFor='folder-name-input'>
+                Name
+              </label>
+              <input type='text' id='folder-name-input' name='folder-name' />
+            </div>
+            <div className='buttons'>
+              <button type='submit'>
+                Add folder
+              </button>
+            </div>
+          </NotefulForm>
+        </section>
     )
   }
+}
+
+AddFolder.propTypes = {
+  history: PropTypes.object,
+  push: PropTypes.func
 }

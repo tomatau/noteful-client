@@ -10,7 +10,9 @@ import AddNote from '../AddNote/AddNote'
 import './App.css'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import ErrorBoundry from '../ErrorBoundry'
+import ErrorBoundry from '../ErrorBoundary'
+import PropTypes from "prop-types"
+
 
 
 class App extends Component {
@@ -159,5 +161,10 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  folders: PropTypes.array,
+  notes: PropTypes.array
+};
 
 export default App

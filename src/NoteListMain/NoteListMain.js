@@ -51,5 +51,7 @@ export default class NoteListMain extends React.Component {
 }
 
 NoteListMain.propTypes = {
-  notes: PropTypes.array
+  match: PropTypes.object,
+  notes: PropTypes.array,
+  params: PropTypes.object
 };
