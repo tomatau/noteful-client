@@ -6,6 +6,12 @@ import './AddNote.css'
 import PropTypes from "prop-types"
 
 export default class AddNote extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false
+    };
+  }
   static defaultProps = {
     history: {
       push: () => { }
@@ -20,6 +26,16 @@ export default class AddNote extends Component {
       content: e.target['note-content'].value,
       folderId: e.target['note-folder-id'].value,
       modified: new Date(),
+    }
+    if (newNote.name === "" || newNote.content === "") {
+      this.setState({
+        hasError: true
+      });
+      return;
+    } else {
+      this.setState({
+        hasError: false
+      });
     }
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
@@ -43,10 +59,18 @@ export default class AddNote extends Component {
   }
 
   render() {
-    const { folders=[] } = this.context
+    let errorText;
+    if (this.state.hasError) {
+      errorText = <span id="errorMessage">Folder name can not be empty!</span>
+    } else {
+      errorText = null;
+    }
+
+    const {folders=[]} = this.context;
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
+        {errorText}
         <NotefulForm onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='note-name-input'>
@@ -86,6 +110,7 @@ export default class AddNote extends Component {
 
 AddNote.propTypes = {
   folders: PropTypes.array,
-  history: PropTypes.object,
-  push: PropTypes.func
+  history: PropTypes.shape({
+    push: PropTypes.func
+  })
 };

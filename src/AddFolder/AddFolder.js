@@ -6,17 +6,35 @@ import './AddFolder.css'
 import PropTypes from "prop-types"
 
 export default class AddFolder extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false
+    };
+  }
   static defaultProps = {
     history: {
       push: () => { }
     },
   }
+
+
   static contextType = ApiContext;
 
   handleSubmit = e => {
     e.preventDefault()
     const folder = {
       name: e.target['folder-name'].value
+    }
+    if (folder.name === "") {
+      this.setState({
+        hasError: true});
+        return;
+    }
+    else {
+      this.setState({
+        hasError: false
+      });
     }
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: 'POST',
@@ -40,9 +58,18 @@ export default class AddFolder extends Component {
   }
 
   render() {
+    let errorText
+    if (this.state.hasError) {
+      errorText = <span id="errorMessage">Folder name can not be empty!</span>
+      }
+    else {
+      errorText = null;
+    }
+
     return (
         <section className='AddFolder'>
           <h2>Create a folder</h2>
+          {errorText}
           <NotefulForm onSubmit={this.handleSubmit}>
             <div className='field'>
               <label htmlFor='folder-name-input'>
@@ -62,6 +89,7 @@ export default class AddFolder extends Component {
 }
 
 AddFolder.propTypes = {
-  history: PropTypes.object,
-  push: PropTypes.func
+  history: PropTypes.shape({
+    push: PropTypes.func
+  })
 }

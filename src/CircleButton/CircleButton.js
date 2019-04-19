@@ -18,7 +18,7 @@ export default function NavCircleButton(props) {
 NavCircleButton.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
-  tag: PropTypes.func
+  tag: PropTypes.any
 }
 
 NavCircleButton.defaultProps ={
