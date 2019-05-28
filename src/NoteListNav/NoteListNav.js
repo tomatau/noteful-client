@@ -11,6 +11,7 @@ export default function NoteListNav(props) {
       <ul className='NoteListNav__list'>
         {props.folders.map(folder =>
           <li key={folder.id}>
+           
             <NavLink
               className='NoteListNav__folder-link'
               to={`/folder/${folder.id}`}
