@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
+import ErrorBoundaryMain from '../ErrorBoundaryMain/ErrorBoundaryMain'
 import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
@@ -22,15 +23,19 @@ export default class NoteListMain extends React.Component {
     return ( 
       <section className='NoteListMain'>
         <ul>
-          {notesForFolder.map(note => 
-            <li key={note.id}>
-              <Note 
-                id={note.id}
-                name={note.name}
-                modified={note.modfified}
-              />
-            </li>
-          )}
+
+            {notesForFolder.map(note => 
+              <ErrorBoundaryMain key={note.id}>
+                <li key={note.id}>
+                  <Note 
+                    id={note.id}
+                    name={note.name}
+                    modified={note.modfified}
+                  />
+                </li>                
+              </ErrorBoundaryMain>
+
+            )}
         </ul>
         <div className='NoteListMain__Button-container'>
           <CircleButton
