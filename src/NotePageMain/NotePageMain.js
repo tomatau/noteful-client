@@ -1,10 +1,11 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import Note from '../Note/Note'
 import ApiContext from '../ApiContext'
 import { findNote } from '../notes-helpers'
 import './NotePageMain.css'
 
-export default class NotePageMain extends React.Component {
+class NotePageMain extends React.Component {
   static defaultProps = {
     match: { 
       params: {}
@@ -38,3 +39,8 @@ export default class NotePageMain extends React.Component {
   } 
 }
 
+NotePageMain.propTypes = {
+  match: PropTypes.object
+}
+
+export default NotePageMain

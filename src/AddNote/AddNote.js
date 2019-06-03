@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
@@ -6,7 +7,7 @@ import './AddNote.css'
 import ValidationError from '../ValidationError/ValidationError';
 
 
-export default class AddNote extends Component {
+class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +18,7 @@ export default class AddNote extends Component {
       noteContentValid: false,
       folderValid: false,
       formValid: false,
+      canSubmit: false,
       validationMessages: {
         name: '',
         noteContent: '',
@@ -34,14 +36,6 @@ export default class AddNote extends Component {
 
   static contextType = ApiContext;
 
-  canBeSubmitted() {
-    const { nameValid, noteContentValid, folderValid } = this.state;
-    return (
-      nameValid === true &&
-      noteContentValid === true &&
-      folderValid === true
-    );
-  }
 
   handleSubmit = e =>  {
     
@@ -53,27 +47,37 @@ export default class AddNote extends Component {
       folderId: e.target['note-folder-select'].value,
       modified: new Date(),
     }
- 
-    fetch(`${config.API_ENDPOINT}/notes`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newNote),
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
-      .then(note => {
-        this.context.addNote(note)
-        this.props.history.push(`/folder/${note.folderId}`)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+    // checks validations 
+    if(this.state.formValid === true) {
+        // enables submit button 
+        this.setState({canSubmit: true})
+        // POST to endpoint on submit
+        fetch(`${config.API_ENDPOINT}/notes`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(newNote),
+        })
+          .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+            return res.json()
+          })
+          .then(note => {
+            this.context.addNote(note)
+            this.props.history.push(`/folder/${note.folderId}`)
+          })
+          .catch(error => {
+            console.error({ error })
+          })   
+    } else {
+      // disables submit button until formValid  is true
+       this.setState({canSubmit: false})
+       
+    }
   }
+
   updateName(name) {
     this.setState({name}, () => {this.validateName(name)});
   }
@@ -84,14 +88,12 @@ export default class AddNote extends Component {
 
   updateFolder(folder) {
     this.setState({folder}, () => {this.validateFolder(folder)});
-  }
-
- 
-    
+  }   
 
   formValid() {
+    // checks to make sure the validation checks are true and changes state of formValid to true
     this.setState({
-      formValid: this.setState.nameValid && this.setState.noteContentValid && this.setState.folderValid
+      formValid: this.state.nameValid && this.state.noteContentValid && this.state.folderValid
       
     });
   }
@@ -155,7 +157,7 @@ export default class AddNote extends Component {
 
   render() {
     const { folders=[] } = this.context;
-    const isEnabled = this.canBeSubmitted();
+    const isEnabled = this.state.canSubmit;
  
     return (
       <section className='AddNote'>
@@ -191,7 +193,7 @@ export default class AddNote extends Component {
             <ValidationError hasError={!this.state.folderValid} message={this.state.validationMessages.folder} />
           </div>
           <div className='buttons'>
-            <button type='submit'  disabled={!isEnabled}>
+            <button type='submit' disabled={isEnabled} >
               Add note
             </button>
           </div>
@@ -200,3 +202,9 @@ export default class AddNote extends Component {
     )
   }
 }
+
+AddNote.propType = { 
+  folders: PropTypes.array,
+}
+
+export default AddNote;

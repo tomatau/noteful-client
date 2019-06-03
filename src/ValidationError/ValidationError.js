@@ -1,6 +1,7 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
-export default function ValidationError(props) {
+function ValidationError(props) {
     if(props.hasError) {
         return (
             <div className="error">{props.message}</div>
@@ -8,4 +9,11 @@ export default function ValidationError(props) {
     }
 
     return <></>
-}
+};
+
+ValidationError.propTypes = {
+    hasError: Proptypes.bool,
+    message: Proptypes.string,
+};
+
+export default ValidationError;

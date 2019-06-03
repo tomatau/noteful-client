@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
+import { PropTypes } from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './Note.css'
 
-export default class Note extends React.Component {
+ class Note extends React.Component {
   static defaultProps ={
     onDeleteNote: () => {},
   }
@@ -64,3 +65,11 @@ export default class Note extends React.Component {
     )
   }
 }
+
+Note.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.string,
+  modified: PropTypes.string
+}
+
+export default Note;

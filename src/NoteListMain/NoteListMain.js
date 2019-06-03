@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
@@ -8,7 +9,7 @@ import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
 
-export default class NoteListMain extends React.Component {
+class NoteListMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
@@ -55,3 +56,12 @@ export default class NoteListMain extends React.Component {
   }
 }
 
+NoteListMain.propType = { 
+  match: PropTypes.object,
+  params: PropTypes.object,
+  notes: PropTypes.array,
+  notesForFolder: PropTypes.func,
+  
+}
+
+export default NoteListMain;

@@ -1,11 +1,12 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { findNote, findFolder } from '../notes-helpers'
 import './NotePageNav.css'
 
-export default class NotePageNav extends React.Component {
+class NotePageNav extends React.Component {
   static defaultProps = {
     history: { 
       goBack: () => { }
@@ -43,5 +44,11 @@ export default class NotePageNav extends React.Component {
   }
 }
 
+NotePageNav.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object
+}
+
+export default NotePageNav;
 
 

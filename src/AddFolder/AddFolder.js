@@ -6,13 +6,14 @@ import ValidationError from '../ValidationError/ValidationError'
 import './AddFolder.css'
 
 
-export default class AddFolder extends Component {
+class AddFolder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       nameValid: false,
       formValid: false,
+      canSubmit: false,
       validationMessages: {
         name: '',
       }
@@ -27,44 +28,45 @@ export default class AddFolder extends Component {
 
   static contextType = ApiContext;
 
-  canBeSubmitted() {
-    const { formValid } = this.state;
-    return (
-      formValid === true
-    );
-  }
-  
-
   updateName(name) {
     this.setState({name}, () => {this.validateName(name)});
   }
 
   handleSubmit = e => {
+
     e.preventDefault()
     const folder = {
       name: e.target['folder-name-input'].value
     }
-    //submit values to server
-    fetch(`${config.API_ENDPOINT}/folders`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(folder),
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+    if(this.state.formValid === true){
+      //enable submit button 
+      this.setState({canSubmit: true})
+      //POST on submit
+      fetch(`${config.API_ENDPOINT}/folders`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(folder),
       })
-      .then(folder => {
-        //callback for the addFolder function
-        this.context.addFolder(folder)
-        this.props.history.push(`/folder/${folder.id}`)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+          return res.json()
+        })
+        .then(folder => {
+          //callback for the addFolder function
+          this.context.addFolder(folder)
+          this.props.history.push(`/folder/${folder.id}`)
+        })
+        .catch(error => {
+          console.error({ error })
+        })      
+    } else {
+      this.setState({canSubmit: false})
+    }
+    
+
   }
 
   validateName(fieldValue) {
@@ -96,7 +98,7 @@ export default class AddFolder extends Component {
   }
 
   render() {
-    const isEnabled = this.canBeSubmitted();
+    const isEnabled = this.state.canSubmit;
     return (
       <section className='AddFolder'>
         <h2>Create a folder</h2>
@@ -109,7 +111,7 @@ export default class AddFolder extends Component {
             <ValidationError hasError={!this.state.nameValid} message={this.state.validationMessages.name}/>
           </div>
           <div className='buttons'>
-            <button type='submit' disabled={!isEnabled} >
+            <button type='submit' disabled={isEnabled} >
               Add folder
             </button>
           </div>
@@ -118,3 +120,6 @@ export default class AddFolder extends Component {
     )
   }
 }
+
+
+export default AddFolder;
