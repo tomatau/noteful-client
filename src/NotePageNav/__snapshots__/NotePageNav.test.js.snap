@@ -4,7 +4,7 @@ exports[`NotePageNav component renders a .NotePageNav by default 1`] = `
 <div
   className="NotePageNav"
 >
-  <NavCircleButton
+  <CircleButton
     className="NotePageNav__back-button"
     onClick={[Function]}
     role="link"
@@ -30,14 +30,8 @@ exports[`NotePageNav component renders a .NotePageNav by default 1`] = `
     />
     <br />
     Back
-  </NavCircleButton>
+  </CircleButton>
 </div>
 `;
 
-exports[`NotePageNav component renders a h3 with folder name when in props 1`] = `
-<h3
-  className="NotePageNav__folder-name"
->
-  Important
-</h3>
-`;
+exports[`NotePageNav component renders a h3 with folder name when in props 1`] = `null`;

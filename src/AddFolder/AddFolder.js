@@ -74,7 +74,7 @@ class AddFolder extends Component {
     let hasError = false;
     fieldValue = fieldValue.trim();
     if(fieldValue.length === 0) {
-      fieldErrors.name = 'Name a folder';
+      fieldErrors.name = 'Name is required';
       hasError = true;
     } else { 
       if (fieldValue.length < 2) {

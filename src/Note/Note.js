@@ -40,6 +40,7 @@ import './Note.css'
 
   render() {
     const { name, id, modified } = this.props
+
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -57,7 +58,7 @@ import './Note.css'
             Modified
             {' '}
             <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
+              {format(modified, 'Do MMM YYYY' )}
             </span>
           </div>
         </div>

@@ -127,7 +127,7 @@ class AddNote extends Component {
     let hasError = false;
     fieldValue = fieldValue.trim();
     if(fieldValue < 1) {
-      fieldErrors.noteContent = 'add a note';
+      fieldErrors.noteContent = 'Content is required';
       hasError = true;
     } else {
       fieldErrors.noteContent = '';

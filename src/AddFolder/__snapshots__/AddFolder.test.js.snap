@@ -7,7 +7,9 @@ exports[`AddItemForm component renders the complete form 1`] = `
   <h2>
     Create a folder
   </h2>
-  <NotefulForm>
+  <NotefulForm
+    onSubmit={[Function]}
+  >
     <div
       className="field"
     >
@@ -18,13 +20,19 @@ exports[`AddItemForm component renders the complete form 1`] = `
       </label>
       <input
         id="folder-name-input"
+        onChange={[Function]}
         type="text"
+      />
+      <ValidationError
+        hasError={true}
+        message=""
       />
     </div>
     <div
       className="buttons"
     >
       <button
+        disabled={false}
         type="submit"
       >
         Add folder

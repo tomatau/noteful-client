@@ -31,7 +31,7 @@ class NoteListMain extends React.Component {
                   <Note 
                     id={note.id}
                     name={note.name}
-                    modified={note.modfified}
+                    modified={note.modified}
                   />
                 </li>                
               </ErrorBoundaryMain>

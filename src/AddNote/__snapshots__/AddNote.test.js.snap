@@ -7,7 +7,9 @@ exports[`AddNote component renders the complete form 1`] = `
   <h2>
     Create a note
   </h2>
-  <NotefulForm>
+  <NotefulForm
+    onSubmit={[Function]}
+  >
     <div
       className="field"
     >
@@ -18,7 +20,12 @@ exports[`AddNote component renders the complete form 1`] = `
       </label>
       <input
         id="note-name-input"
+        onChange={[Function]}
         type="text"
+      />
+      <ValidationError
+        hasError={true}
+        message=""
       />
     </div>
     <div
@@ -31,6 +38,11 @@ exports[`AddNote component renders the complete form 1`] = `
       </label>
       <textarea
         id="note-content-input"
+        onChange={[Function]}
+      />
+      <ValidationError
+        hasError={true}
+        message=""
       />
     </div>
     <div
@@ -43,6 +55,7 @@ exports[`AddNote component renders the complete form 1`] = `
       </label>
       <select
         id="note-folder-select"
+        onChange={[Function]}
       >
         <option
           value={null}
@@ -50,11 +63,16 @@ exports[`AddNote component renders the complete form 1`] = `
           ...
         </option>
       </select>
+      <ValidationError
+        hasError={true}
+        message=""
+      />
     </div>
     <div
       className="buttons"
     >
       <button
+        disabled={false}
         type="submit"
       >
         Add note
@@ -67,29 +85,12 @@ exports[`AddNote component renders the complete form 1`] = `
 exports[`AddNote component renders the select options from folders 1`] = `
 <select
   id="note-folder-select"
+  onChange={[Function]}
 >
   <option
     value={null}
   >
     ...
-  </option>
-  <option
-    key="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
-    value="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
-  >
-    Important
-  </option>
-  <option
-    key="b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
-    value="b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
-  >
-    Super
-  </option>
-  <option
-    key="b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
-    value="b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
-  >
-    Spangley
   </option>
 </select>
 `;
