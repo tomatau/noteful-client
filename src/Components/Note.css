@@ -1,0 +1,35 @@
+.Remove-button {
+  margin-left: 10px;
+}
+
+.Individual-note {
+  margin-left: 5px;
+  height: 500px;
+  width: 400px;
+  margin-left: 40%;
+}
+
+.Note-folder-name {
+  border: 1px solid black;
+  position: absolute;
+  left: 30%;
+  top: 20%;
+  font-size: 40px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.Individual-note-area {
+  margin-top: 35px;
+}
+
+.Back-link {
+  position: absolute;
+  left: 30%;
+  top: 10%;
+  font-size: 15px;
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  text-decoration: none;
+}

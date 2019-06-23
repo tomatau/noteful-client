@@ -1,0 +1,12 @@
+
+header {
+  margin-left: 48%;
+  margin-top: 40px;
+}
+
+.Grid-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30%;
+  margin-top: 40px;
+}

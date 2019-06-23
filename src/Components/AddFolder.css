@@ -1,0 +1,9 @@
+
+.add-folder {
+  border: 1px solid grey;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}

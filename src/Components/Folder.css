@@ -1,0 +1,15 @@
+.Individual-folder {
+  border: 1px solid black;
+  height: 40px;
+  width: 170px;
+  margin-bottom: 8px;
+}
+
+.link {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.active {
+  background-color: yellow;
+}

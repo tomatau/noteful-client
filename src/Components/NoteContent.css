@@ -1,0 +1,42 @@
+.Note-content-area {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40%;
+  margin-top: 40px;
+}
+
+.Note-content {
+  border: 1px solid black;
+  height: 70px;
+  width: 300px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  list-style: none;
+}
+
+.Remove-button {
+  position: relative;
+  left: 65%;
+  top: 10%;
+}
+
+.Modified-date-area {
+  display: flex;
+  padding-left: 5px;
+}
+
+.Modified-date {
+  margin-left: 5px;
+}
+
+.Edit-link {
+  text-decoration: none;
+  position: relative;
+}
+
+.Edit-button {
+  position: relative;
+  top: 10%;
+  right: 5px;
+  width: 60px;
+}
