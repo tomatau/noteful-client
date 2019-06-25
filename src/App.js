@@ -17,8 +17,8 @@ class App extends React.Component {
 
   componentDidMount() {
     Promise.all([
-      fetch("https://shielded-bayou-42227.herokuapp.com/api/folders"),
-      fetch("https://shielded-bayou-42227.herokuapp.com/api/notes")
+      fetch("https://blooming-forest-89993.herokuapp.com/"),
+      fetch("https://blooming-forest-89993.herokuapp.com/")
     ])
       .then(([folderRes, noteRes]) => {
         if (!folderRes.ok) return folderRes.json().then(e => Promise.reject(e));

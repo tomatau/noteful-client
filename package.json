@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "react-scripts test --colors",
+    "prebuild": "CI=true react-scripts test --colors",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

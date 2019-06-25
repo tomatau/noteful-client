@@ -28,7 +28,7 @@ export default class AddFolder extends React.Component {
     e.preventDefault();
     const { id, name } = this.state;
     const folder = { id, name };
-    fetch(`https://shielded-bayou-42227.herokuapp.com/api/folders`, {
+    fetch(`https://blooming-forest-89993.herokuapp.com/`, {
       method: "POST",
       body: JSON.stringify(folder),
       headers: {

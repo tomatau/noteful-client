@@ -15,7 +15,7 @@ class NoteContent extends Component {
     e.preventDefault();
     const noteId = this.props.id;
 
-    fetch(`https://shielded-bayou-42227.herokuapp.com/api/notes/${noteId}`, {
+    fetch(`https://blooming-forest-89993.herokuapp.com/api/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
