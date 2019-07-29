@@ -2,13 +2,13 @@
 
 exports[`CircleButton component renders a button.CircleButton by default 1`] = `
 <a
-  className="NavCircleButton "
+  className="CircleButton "
 />
 `;
 
 exports[`CircleButton component renders the circle button from props 1`] = `
 <a
-  className="NavCircleButton test-class-name"
+  className="CircleButton test-class-name"
   data-other="test-other-prop"
 >
   <p>
