@@ -20,8 +20,8 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all ([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`)
+      fetch(`${config.API_ENDPOINT}/api/notes`),
+      fetch(`${config.API_ENDPOINT}/api/folders`)
     ])
       .then(([notesRes, foldersRes]) => {
         if(!notesRes.ok)
@@ -123,6 +123,8 @@ class App extends Component {
     )
   }
 
+  updateArticle = () => {};
+
   render() {
     const value = { 
       notes: this.state.notes,
@@ -130,6 +132,7 @@ class App extends Component {
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
+      updateArticle: this.updateArticle
     }
     return (
       <ApiContext.Provider value={value}>

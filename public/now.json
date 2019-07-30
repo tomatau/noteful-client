@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "alias": "my-noteful-client",
+    "name": "noteful-client",
+    "routes": [
+        {
+            "src": "^/static/(.*)",
+            "dest": "/static/$1"            
+        },
+        {
+            "src": ".*",
+            "dest": "/index.html"
+        }
+
+    ]
+}

@@ -8,7 +8,6 @@ exports[`Note component renders a .Note by default 1`] = `
     className="Note__title"
   >
     <Link
-      replace={false}
       to="/note/undefined"
     />
   </h2>
@@ -64,7 +63,6 @@ exports[`Note component renders the Note given props 1`] = `
     className="Note__title"
   >
     <Link
-      replace={false}
       to="/note/a"
     >
       test-class-name
