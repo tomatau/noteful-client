@@ -23,18 +23,21 @@ class App extends Component {
       fetch(`${config.API_ENDPOINT}/api/notes`),
       fetch(`${config.API_ENDPOINT}/api/folders`)
     ])
+    // returning unresolved promises fetch api 
+    // promises have to be resolved by the time you use them 
       .then(([notesRes, foldersRes]) => {
+        // console.log(notesRes.json().then(e => Promise.resolve(e)))
         if(!notesRes.ok)
           return notesRes.json().then(e => Promise.reject(e))
+          // instead of rejecting try .resolve
         if (!foldersRes.ok)
           return foldersRes.json().then(e => Promise.reject(e))
         
-        return Promise.all([
-          notesRes.json(),
-          foldersRes.json(),
-        ])
+        return Promise.resolve([notesRes.json(), foldersRes.json()])
       })
       .then(([notes, folders]) => {
+        console.log(notes)
+        console.log(folders)
         this.setState({ notes, folders })
       })
       .catch(error => {
@@ -132,7 +135,7 @@ class App extends Component {
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
-      updateArticle: this.updateArticle
+      updateNotes: this.updateNotes
     }
     return (
       <ApiContext.Provider value={value}>

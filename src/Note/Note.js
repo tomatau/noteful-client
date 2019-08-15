@@ -17,16 +17,20 @@ import './Note.css'
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: { 
         'content-type': 'application/json'
       },
     })
+      // .then(res)
       .then(res => {
+        console.log(res)
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+          
+          return res.then(e => Promise.reject(e))
+        return res
+        
       })
       .then(() => { 
         this.context.deleteNote(noteId)
@@ -35,6 +39,7 @@ import './Note.css'
       })
       .catch(error => {
         console.error({ error })
+        console.log(error)
       })
   }
 
@@ -69,7 +74,7 @@ import './Note.css'
 
 Note.propTypes = {
   name: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
   modified: PropTypes.string
 }
 

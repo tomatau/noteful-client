@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ErrorBourdaryNav from '../ErrorBoundaryNav/ErrorBoudaryNav'
 import ApiContext from '../ApiContext'
-import { PropTypes } from 'prop-types'
+// import { PropTypes } from 'prop-types'
 import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
 
@@ -16,9 +16,11 @@ import './NoteListNav.css'
     return (
       <div className='NoteListNav'>
         <ul className='NoteListNav__list'>
+          {/* {console.log(folders)} */}
           {folders.map(folder =>
             <ErrorBourdaryNav key={folder.id}>
               <li key={folder.id}>
+                
                 <NavLink
                   className='NoteListNav__folder-link'
                   to={`/folder/${folder.id}`}
@@ -49,9 +51,9 @@ import './NoteListNav.css'
   }
 }
 
-NoteListNav.propTypes = {
-  folders: PropTypes.array,
-  notes: PropTypes.array
-};
+// NoteListNav.propTypes = {
+//   folders: PropTypes.array,
+//   notes: PropTypes.array
+// };
 
 export default NoteListNav;

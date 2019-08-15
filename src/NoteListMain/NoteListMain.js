@@ -32,9 +32,11 @@ class NoteListMain extends React.Component {
                     id={note.id}
                     name={note.name}
                     modified={note.modified}
+                    content={note.content}
+                    folderId={folderId}
                   />
                 </li>                
-              </ErrorBoundaryMain>
+               </ErrorBoundaryMain>
 
             )}
         </ul>

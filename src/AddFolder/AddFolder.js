@@ -38,11 +38,12 @@ class AddFolder extends Component {
     const folder = {
       name: e.target['folder-name-input'].value
     }
+    console.log(folder);
     if(this.state.formValid === true){
       //enable submit button 
       this.setState({canSubmit: true})
       //POST on submit
-      fetch(`${config.API_ENDPOINT}/folders`, {
+      fetch(`${config.API_ENDPOINT}/api/folders`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -57,7 +58,7 @@ class AddFolder extends Component {
         .then(folder => {
           //callback for the addFolder function
           this.context.addFolder(folder)
-          this.props.history.push(`/folder/${folder.id}`)
+          // this.props.history.push(`/folder/${folder.id}`)
         })
         .catch(error => {
           console.error({ error })

@@ -44,29 +44,31 @@ class AddNote extends Component {
     const newNote = { 
       name: e.target['note-name-input'].value,
       content: e.target['note-content-input'].value,
-      folderId: e.target['note-folder-select'].value,
-      modified: new Date(),
+      folder_id: e.target['note-folder-select'].value,
+
     }
+    console.log(newNote);
     // checks validations 
     if(this.state.formValid === true) {
         // enables submit button 
         this.setState({canSubmit: true})
         // POST to endpoint on submit
-        fetch(`${config.API_ENDPOINT}/notes`, {
+        fetch(`${config.API_ENDPOINT}/api/notes`, {
           method: 'POST',
           headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
           },
           body: JSON.stringify(newNote),
         })
           .then(res => {
             if (!res.ok)
-              return res.json().then(e => Promise.reject(e))
-            return res.json()
+               
+              return res(e => Promise.reject(e))
+            return res
           })
           .then(note => {
             this.context.addNote(note)
-            this.props.history.push(`/folder/${note.folderId}`)
+            this.props.history.push(`/note/${note.folder_id}`)
           })
           .catch(error => {
             console.error({ error })
