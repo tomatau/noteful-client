@@ -24,7 +24,6 @@ class NoteListMain extends React.Component {
     return ( 
       <section className='NoteListMain'>
         <ul>
-
             {notesForFolder.map(note => 
               <ErrorBoundaryMain key={note.id}>
                 <li key={note.id}>

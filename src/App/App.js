@@ -19,30 +19,52 @@ class App extends Component {
   };
 
   componentDidMount() {
-    Promise.all ([
-      fetch(`${config.API_ENDPOINT}/api/notes`),
-      fetch(`${config.API_ENDPOINT}/api/folders`)
-    ])
-    // returning unresolved promises fetch api 
-    // promises have to be resolved by the time you use them 
-      .then(([notesRes, foldersRes]) => {
-        // console.log(notesRes.json().then(e => Promise.resolve(e)))
-        if(!notesRes.ok)
-          return notesRes.json().then(e => Promise.reject(e))
-          // instead of rejecting try .resolve
-        if (!foldersRes.ok)
-          return foldersRes.json().then(e => Promise.reject(e))
+    // Promise.all ([
+    //   fetch(`${config.API_ENDPOINT}/api/notes`),
+    //   fetch(`${config.API_ENDPOINT}/api/folders`)
+    // ])
+    // // returning unresolved promises fetch api 
+    // // promises have to be resolved by the time you use them 
+    //   .then(([notesRes, foldersRes]) => {
+    //     // console.log(notesRes.json().then(e => Promise.resolve(e)))
+    //     if(!notesRes.ok)
+    //       return notesRes.json().then(e => Promise.reject(e))
+    //       // instead of rejecting try .resolve
+    //     if (!foldersRes.ok)
+    //       return foldersRes.json().then(e => Promise.reject(e))
         
-        return Promise.resolve([notesRes.json(), foldersRes.json()])
-      })
-      .then(([notes, folders]) => {
-        console.log(notes)
-        console.log(folders)
-        this.setState({ notes, folders })
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+    //     return Promise.resolve([notesRes.json(), foldersRes.json()])
+    //   })
+    //   .then(([notes, folders]) => {
+    //     // console.log(notes)
+    //     // console.log(folders)
+    //     this.setState({ notes, folders })
+    //   })
+    //   .catch(error => {
+    //     console.error({ error })
+    //   })
+    fetch(`${config.API_ENDPOINT}/api/notes`)
+    .then(res => res.json())
+    .then(
+      notesRes => {
+        this.setState({
+          notes: notesRes,
+        });
+      }
+    )
+    .catch(error => { console.error({error })})
+    
+  fetch(`${config.API_ENDPOINT}/api/folders`)
+    .then(res => res.json())
+    .then(
+      foldersRes => {
+        this.setState({
+
+          folders: foldersRes,
+        });
+      }
+    )
+    .catch(error => { console.error({error })})
 
   }
 
@@ -69,9 +91,8 @@ class App extends Component {
       notes: this.state.notes.filter(note => note.id !== noteId)
     })
   }
-
+    
   renderNavRoutes() {
-  
     return (
       <>
         {['/', '/folder/:folderId'].map(path =>
