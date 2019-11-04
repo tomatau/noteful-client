@@ -23,7 +23,7 @@ class NoteListMain extends React.Component {
     const notesForFolder = getNotesForFolder(notes, folderId)
     return ( 
       <section className='NoteListMain'>
-        <ul>
+        <ul >
             {notesForFolder.map(note => 
               <ErrorBoundaryMain key={note.id}>
                 <li key={note.id}>
@@ -32,7 +32,7 @@ class NoteListMain extends React.Component {
                     name={note.name}
                     modified={note.modified}
                     content={note.content}
-                    folderId={folderId}
+                    folder_id={note.folder_id}
                   />
                 </li>                
                </ErrorBoundaryMain>

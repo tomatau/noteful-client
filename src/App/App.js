@@ -9,7 +9,6 @@ import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 import ApiContext from '../ApiContext'
 import config from '../config'
-
 import './App.css'
 
 class App extends Component {
@@ -19,30 +18,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // Promise.all ([
-    //   fetch(`${config.API_ENDPOINT}/api/notes`),
-    //   fetch(`${config.API_ENDPOINT}/api/folders`)
-    // ])
-    // // returning unresolved promises fetch api 
-    // // promises have to be resolved by the time you use them 
-    //   .then(([notesRes, foldersRes]) => {
-    //     // console.log(notesRes.json().then(e => Promise.resolve(e)))
-    //     if(!notesRes.ok)
-    //       return notesRes.json().then(e => Promise.reject(e))
-    //       // instead of rejecting try .resolve
-    //     if (!foldersRes.ok)
-    //       return foldersRes.json().then(e => Promise.reject(e))
-        
-    //     return Promise.resolve([notesRes.json(), foldersRes.json()])
-    //   })
-    //   .then(([notes, folders]) => {
-    //     // console.log(notes)
-    //     // console.log(folders)
-    //     this.setState({ notes, folders })
-    //   })
-    //   .catch(error => {
-    //     console.error({ error })
-    //   })
     fetch(`${config.API_ENDPOINT}/api/notes`)
     .then(res => res.json())
     .then(
@@ -103,18 +78,9 @@ class App extends Component {
             component={NoteListNav}
           />
         )}
-        <Route
-          path='/note/:noteId'
-          component={NotePageNav}
-        />
-        <Route
-          path='/add-folder'
-          component={NotePageNav}
-        />
-        <Route
-          path='/add-note'
-          component={NotePageNav}
-        />
+        <Route path='/note/:noteId' component={NotePageNav} />
+        <Route path='/add-folder' component={NotePageNav} />
+        <Route path='/add-note' component={NotePageNav} />
       </>
     )
   }
@@ -131,18 +97,9 @@ class App extends Component {
             component={NoteListMain}
           />
         )}
-        <Route
-          path='/note/:noteId'
-          component={NotePageMain}
-        />
-        <Route
-          path='/add-folder'
-          component={AddFolder}
-        />
-        <Route
-          path='/add-note'
-          component={AddNote}
-        />
+        <Route path='/note/:noteId' component={NotePageMain} />
+        <Route path='/add-folder' component={AddFolder} />
+        <Route path='/add-note' component={AddNote} />
       </>
     )
   }
@@ -161,13 +118,10 @@ class App extends Component {
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <nav className='App__nav'>
-            {this.renderNavRoutes()}
-          </nav>
+          <nav className='App__nav'> {this.renderNavRoutes()} </nav>
           <header className='App__header'>
             <h1>
-              <Link to='/'>Noteful</Link>
-              {' '}
+              <Link to='/'>Noteful</Link>{' '}
               <FontAwesomeIcon icon='check-double' />
             </h1>
           </header>
@@ -176,7 +130,7 @@ class App extends Component {
           </main>
         </div>        
       </ApiContext.Provider>
-    )
+    );
   }
 }
 
