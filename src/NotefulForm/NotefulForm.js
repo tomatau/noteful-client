@@ -15,7 +15,6 @@ const NotefulForm = (props) => {
 
 NotefulForm.propTypes = {
   className: PropTypes.string,
-  //
   otherProps: PropTypes.object
 };
 

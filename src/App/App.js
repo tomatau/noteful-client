@@ -66,6 +66,12 @@ class App extends Component {
       notes: this.state.notes.filter(note => note.id !== noteId)
     })
   }
+
+  handleDeleteFolder = folderId => {
+    this.setState({
+      folders: this.state.folders.filter(folder => folder.id !== folderId)
+    })
+  }
     
   renderNavRoutes() {
     return (
@@ -113,6 +119,7 @@ class App extends Component {
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
+      deleteFolder: this.handleDeleteFolder,
       updateNotes: this.updateNotes
     }
     return (

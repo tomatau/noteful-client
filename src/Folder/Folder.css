@@ -1,0 +1,54 @@
+  .Folder__folder-link {
+    --folder-height: 40px;
+    background-color: #291538;
+    color: #b5b3b3;
+    display: block;
+    font-family: var(--custom-font);
+    font-size: 20px;
+    margin: 0 0 10px auto;
+    height: 65px;
+    max-width: 250px;
+  
+    /* padding: 8px 12px; */
+    text-decoration: none;
+  }
+
+  .Folder__folder-link:hover {
+    color: #FFB72F;
+    cursor: pointer;
+  }
+
+  .Folder__folder-link.active {
+    background-color: #9F3AE8;
+  }
+
+  .Folder__num-notes {
+    color: #adadad;
+    /* display: block; */
+    /* float: right; */
+    padding: 0px 3px;
+    font-size: 12px;
+  }
+
+  .Folder__delete {
+    --folder-button-height: 25px;
+    background-color: #733A9C;
+    border: 0;
+    color: #bdbcbc;
+    float: right;
+    font-size: 12px;
+    height: var(--folder-button-height);
+    position: relative;
+    top: calc((var(--folder-button-height) + 25px) * .5);
+    
+    transform-origin: right bottom;
+    transform: rotate(-90deg);
+    width: calc(var(--folder-height));
+  }
+
+  .Folder__delete:hover {
+    background-color: rgb(205, 182, 50);
+    color: black;
+    cursor: grab;
+
+  }

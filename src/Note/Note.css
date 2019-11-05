@@ -25,8 +25,8 @@
   width: calc(var(--note-height));
 }
 .Note__delete:hover {
-  background-color: #D6E84D;
-  color: white;
+  background-color: rgb(241, 224, 123);
+  color: rgb(72, 72, 72);
   cursor: pointer;
   font-weight: bold;
 }

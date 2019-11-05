@@ -1,15 +1,20 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ErrorBourdaryNav from '../ErrorBoundaryNav/ErrorBoudaryNav'
 import ApiContext from '../ApiContext'
+import Folder from '../Folder/Folder'
 import { PropTypes } from 'prop-types'
-import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
+
+
 
  class NoteListNav extends React.Component {
   static contextType = ApiContext;
+
+
+  
 
   render() {
     const { folders=[], notes=[] } = this.context;
@@ -20,18 +25,13 @@ import './NoteListNav.css'
 
           {folders.map(folder =>
             <ErrorBourdaryNav key={folder.id}>
-              <li key={folder.id}>
-                
-                <NavLink
-                  className='NoteListNav__folder-link'
-                  to={`/folder/${folder.id}`}
-                >
-                  <span className='NoteListNav__num-notes'>
-                    {countNotesForFolder(notes, folder.id)}
-                  </span>
-                  {folder.name} 
 
-                </NavLink>
+              <li key={folder.id}>
+                <Folder 
+                  id={folder.id}
+                  name={folder.name}
+                  notes={notes}
+                />
               </li>              
             </ErrorBourdaryNav>
           )}            
