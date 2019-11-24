@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
+
 import config from '../config'
 import ValidationError from '../ValidationError/ValidationError' 
 import './AddFolder.css'
@@ -38,32 +39,39 @@ class AddFolder extends Component {
     const folder = {
       name: e.target['folder-name-input'].value
     }
-    console.log(folder);
+    // console.log(folder)
+    
     if(this.state.formValid === true){
       //enable submit button 
       this.setState({canSubmit: true})
       //POST on submit
+
       fetch(`${config.API_ENDPOINT}/api/folders`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
         },
         body: JSON.stringify(folder),
+    
       })
         .then(res => {
-          if (!res.ok)
-            return res.json().then(e => Promise.reject(e))
-          return res.json()
+          console.log(res)
+          // if (!res.ok)
+          //   return res.json(folder)
+          //  .then(e => Promise.reject(e));
+           return res.json(folder)
         })
         .then(folder => {
           //callback for the addFolder function
+          console.log(folder)
           this.context.addFolder(folder)
-          this.props.history.push(`/folder/${folder.id}`)
+          this.props.history.push(`/folders/${folder.id}`)
         })
-        .catch(error => {
-          console.error({ error })
-        })      
-    } else {
+       .catch(error => {
+         console.error({ error })
+       })      
+    } 
+    else {
       this.setState({canSubmit: false})
     }
     
