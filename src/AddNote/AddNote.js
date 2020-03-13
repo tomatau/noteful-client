@@ -63,12 +63,13 @@ class AddNote extends Component {
           .then(res => {
             if (!res.ok)
                
-              return res(e => Promise.reject(e))
-            return res
+              return res.json()(e => Promise.reject(e))
+            return res.json()
           })
           .then(note => {
             this.context.addNote(note)
-            this.props.history.push(`/note/${note.folder_id}`)
+            console.log(note)
+            this.props.history.push(`/note/${note.id}`)
           })
           .catch(error => {
             console.error({ error })
